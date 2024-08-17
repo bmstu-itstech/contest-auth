@@ -2,7 +2,7 @@ package yaml
 
 import "time"
 
-// JWT holds the configuration for the JWT server.
+// JWT holds the configuration for the JWT.
 type JWT struct {
 	RefreshTokenSecretKey  string
 	AccessTokenSecretKey   string

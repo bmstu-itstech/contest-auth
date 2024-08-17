@@ -4,7 +4,7 @@ COPY app /github.com/bmstu-itstech/contest-auth/source
 WORKDIR /github.com/bmstu-itstech/contest-auth/source
 
 RUN go mod download
-RUN go build -o ./bin/auth cmd/main.go
+RUN go build -o ./bin/contest-auth cmd/main.go
 
 FROM alpine:latest
 

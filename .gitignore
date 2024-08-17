@@ -28,3 +28,6 @@ go.work.sum
 # Workspace files
 bin
 .vscode
+.env
+vendor.protogen
+.docker-compose.yaml
