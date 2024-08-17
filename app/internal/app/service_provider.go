@@ -5,8 +5,11 @@ import (
 	"log"
 
 	"github.com/bmstu-itstech/contest-auth/config"
+	userAPI "github.com/bmstu-itstech/contest-auth/internal/api/grpc/user"
 	"github.com/bmstu-itstech/contest-auth/internal/repository"
+	userRepository "github.com/bmstu-itstech/contest-auth/internal/repository/user"
 	"github.com/bmstu-itstech/contest-auth/internal/service"
+	userService "github.com/bmstu-itstech/contest-auth/internal/service/user"
 	"github.com/bmstu-itstech/contest-auth/pkg/closer"
 	"github.com/bmstu-itstech/contest-auth/pkg/db"
 	"github.com/bmstu-itstech/contest-auth/pkg/db/pg"

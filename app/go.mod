@@ -9,6 +9,7 @@ require (
 	github.com/ilyakaznacheev/cleanenv v1.5.0
 	github.com/jackc/pgconn v1.14.3
 	github.com/jackc/pgx/v4 v4.18.3
+	github.com/lib/pq v1.10.2
 	github.com/pkg/errors v0.9.1
 	google.golang.org/grpc v1.65.0
 	google.golang.org/protobuf v1.34.2
