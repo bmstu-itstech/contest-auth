@@ -2,7 +2,7 @@
 
 package mocks
 
-//go:generate minimock -i github.com/Prrromanssss/platform_common/pkg/db.TxManager -o tx_manager_minimock.go -n TxManagerMock -p mocks
+//go:generate minimock -i github.com/bmstu-itstech/contest-auth/pkg/db.TxManager -o tx_manager_minimock.go -n TxManagerMock -p mocks
 
 import (
 	"context"
@@ -10,7 +10,7 @@ import (
 	mm_atomic "sync/atomic"
 	mm_time "time"
 
-	mm_db "github.com/Prrromanssss/platform_common/pkg/db"
+	mm_db "github.com/bmstu-itstech/contest-auth/pkg/db"
 	"github.com/gojuno/minimock/v3"
 )
 

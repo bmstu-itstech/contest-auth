@@ -18,10 +18,10 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// AuthV1Client is the client API for AuthV1 service.
+// UserV1Client is the client API for UserV1 service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type AuthV1Client interface {
+type UserV1Client interface {
 	Registration(ctx context.Context, in *RegistrationRequest, opts ...grpc.CallOption) (*RegistrationResponse, error)
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
@@ -29,219 +29,219 @@ type AuthV1Client interface {
 	GetAccessToken(ctx context.Context, in *GetAccessTokenRequest, opts ...grpc.CallOption) (*GetAccessTokenResponse, error)
 }
 
-type authV1Client struct {
+type userV1Client struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewAuthV1Client(cc grpc.ClientConnInterface) AuthV1Client {
-	return &authV1Client{cc}
+func NewUserV1Client(cc grpc.ClientConnInterface) UserV1Client {
+	return &userV1Client{cc}
 }
 
-func (c *authV1Client) Registration(ctx context.Context, in *RegistrationRequest, opts ...grpc.CallOption) (*RegistrationResponse, error) {
+func (c *userV1Client) Registration(ctx context.Context, in *RegistrationRequest, opts ...grpc.CallOption) (*RegistrationResponse, error) {
 	out := new(RegistrationResponse)
-	err := c.cc.Invoke(ctx, "/auth_v1.AuthV1/Registration", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user_v1.UserV1/Registration", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *authV1Client) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
+func (c *userV1Client) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
 	out := new(LoginResponse)
-	err := c.cc.Invoke(ctx, "/auth_v1.AuthV1/Login", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user_v1.UserV1/Login", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *authV1Client) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error) {
+func (c *userV1Client) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error) {
 	out := new(LogoutResponse)
-	err := c.cc.Invoke(ctx, "/auth_v1.AuthV1/Logout", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user_v1.UserV1/Logout", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *authV1Client) GetRefreshToken(ctx context.Context, in *GetRefreshTokenRequest, opts ...grpc.CallOption) (*GetRefreshTokenResponse, error) {
+func (c *userV1Client) GetRefreshToken(ctx context.Context, in *GetRefreshTokenRequest, opts ...grpc.CallOption) (*GetRefreshTokenResponse, error) {
 	out := new(GetRefreshTokenResponse)
-	err := c.cc.Invoke(ctx, "/auth_v1.AuthV1/GetRefreshToken", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user_v1.UserV1/GetRefreshToken", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *authV1Client) GetAccessToken(ctx context.Context, in *GetAccessTokenRequest, opts ...grpc.CallOption) (*GetAccessTokenResponse, error) {
+func (c *userV1Client) GetAccessToken(ctx context.Context, in *GetAccessTokenRequest, opts ...grpc.CallOption) (*GetAccessTokenResponse, error) {
 	out := new(GetAccessTokenResponse)
-	err := c.cc.Invoke(ctx, "/auth_v1.AuthV1/GetAccessToken", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user_v1.UserV1/GetAccessToken", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// AuthV1Server is the server API for AuthV1 service.
-// All implementations must embed UnimplementedAuthV1Server
+// UserV1Server is the server API for UserV1 service.
+// All implementations must embed UnimplementedUserV1Server
 // for forward compatibility
-type AuthV1Server interface {
+type UserV1Server interface {
 	Registration(context.Context, *RegistrationRequest) (*RegistrationResponse, error)
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
 	GetRefreshToken(context.Context, *GetRefreshTokenRequest) (*GetRefreshTokenResponse, error)
 	GetAccessToken(context.Context, *GetAccessTokenRequest) (*GetAccessTokenResponse, error)
-	mustEmbedUnimplementedAuthV1Server()
+	mustEmbedUnimplementedUserV1Server()
 }
 
-// UnimplementedAuthV1Server must be embedded to have forward compatible implementations.
-type UnimplementedAuthV1Server struct {
+// UnimplementedUserV1Server must be embedded to have forward compatible implementations.
+type UnimplementedUserV1Server struct {
 }
 
-func (UnimplementedAuthV1Server) Registration(context.Context, *RegistrationRequest) (*RegistrationResponse, error) {
+func (UnimplementedUserV1Server) Registration(context.Context, *RegistrationRequest) (*RegistrationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Registration not implemented")
 }
-func (UnimplementedAuthV1Server) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
+func (UnimplementedUserV1Server) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
-func (UnimplementedAuthV1Server) Logout(context.Context, *LogoutRequest) (*LogoutResponse, error) {
+func (UnimplementedUserV1Server) Logout(context.Context, *LogoutRequest) (*LogoutResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Logout not implemented")
 }
-func (UnimplementedAuthV1Server) GetRefreshToken(context.Context, *GetRefreshTokenRequest) (*GetRefreshTokenResponse, error) {
+func (UnimplementedUserV1Server) GetRefreshToken(context.Context, *GetRefreshTokenRequest) (*GetRefreshTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRefreshToken not implemented")
 }
-func (UnimplementedAuthV1Server) GetAccessToken(context.Context, *GetAccessTokenRequest) (*GetAccessTokenResponse, error) {
+func (UnimplementedUserV1Server) GetAccessToken(context.Context, *GetAccessTokenRequest) (*GetAccessTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccessToken not implemented")
 }
-func (UnimplementedAuthV1Server) mustEmbedUnimplementedAuthV1Server() {}
+func (UnimplementedUserV1Server) mustEmbedUnimplementedUserV1Server() {}
 
-// UnsafeAuthV1Server may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to AuthV1Server will
+// UnsafeUserV1Server may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to UserV1Server will
 // result in compilation errors.
-type UnsafeAuthV1Server interface {
-	mustEmbedUnimplementedAuthV1Server()
+type UnsafeUserV1Server interface {
+	mustEmbedUnimplementedUserV1Server()
 }
 
-func RegisterAuthV1Server(s grpc.ServiceRegistrar, srv AuthV1Server) {
-	s.RegisterService(&AuthV1_ServiceDesc, srv)
+func RegisterUserV1Server(s grpc.ServiceRegistrar, srv UserV1Server) {
+	s.RegisterService(&UserV1_ServiceDesc, srv)
 }
 
-func _AuthV1_Registration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserV1_Registration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RegistrationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthV1Server).Registration(ctx, in)
+		return srv.(UserV1Server).Registration(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/auth_v1.AuthV1/Registration",
+		FullMethod: "/user_v1.UserV1/Registration",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthV1Server).Registration(ctx, req.(*RegistrationRequest))
+		return srv.(UserV1Server).Registration(ctx, req.(*RegistrationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AuthV1_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserV1_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(LoginRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthV1Server).Login(ctx, in)
+		return srv.(UserV1Server).Login(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/auth_v1.AuthV1/Login",
+		FullMethod: "/user_v1.UserV1/Login",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthV1Server).Login(ctx, req.(*LoginRequest))
+		return srv.(UserV1Server).Login(ctx, req.(*LoginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AuthV1_Logout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserV1_Logout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(LogoutRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthV1Server).Logout(ctx, in)
+		return srv.(UserV1Server).Logout(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/auth_v1.AuthV1/Logout",
+		FullMethod: "/user_v1.UserV1/Logout",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthV1Server).Logout(ctx, req.(*LogoutRequest))
+		return srv.(UserV1Server).Logout(ctx, req.(*LogoutRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AuthV1_GetRefreshToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserV1_GetRefreshToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetRefreshTokenRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthV1Server).GetRefreshToken(ctx, in)
+		return srv.(UserV1Server).GetRefreshToken(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/auth_v1.AuthV1/GetRefreshToken",
+		FullMethod: "/user_v1.UserV1/GetRefreshToken",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthV1Server).GetRefreshToken(ctx, req.(*GetRefreshTokenRequest))
+		return srv.(UserV1Server).GetRefreshToken(ctx, req.(*GetRefreshTokenRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AuthV1_GetAccessToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserV1_GetAccessToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAccessTokenRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthV1Server).GetAccessToken(ctx, in)
+		return srv.(UserV1Server).GetAccessToken(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/auth_v1.AuthV1/GetAccessToken",
+		FullMethod: "/user_v1.UserV1/GetAccessToken",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthV1Server).GetAccessToken(ctx, req.(*GetAccessTokenRequest))
+		return srv.(UserV1Server).GetAccessToken(ctx, req.(*GetAccessTokenRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// AuthV1_ServiceDesc is the grpc.ServiceDesc for AuthV1 service.
+// UserV1_ServiceDesc is the grpc.ServiceDesc for UserV1 service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var AuthV1_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "auth_v1.AuthV1",
-	HandlerType: (*AuthV1Server)(nil),
+var UserV1_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "user_v1.UserV1",
+	HandlerType: (*UserV1Server)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Registration",
-			Handler:    _AuthV1_Registration_Handler,
+			Handler:    _UserV1_Registration_Handler,
 		},
 		{
 			MethodName: "Login",
-			Handler:    _AuthV1_Login_Handler,
+			Handler:    _UserV1_Login_Handler,
 		},
 		{
 			MethodName: "Logout",
-			Handler:    _AuthV1_Logout_Handler,
+			Handler:    _UserV1_Logout_Handler,
 		},
 		{
 			MethodName: "GetRefreshToken",
-			Handler:    _AuthV1_GetRefreshToken_Handler,
+			Handler:    _UserV1_GetRefreshToken_Handler,
 		},
 		{
 			MethodName: "GetAccessToken",
-			Handler:    _AuthV1_GetAccessToken_Handler,
+			Handler:    _UserV1_GetAccessToken_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -14,7 +14,6 @@ import (
 type Config struct {
 	GRPC     yaml.Server   `validate:"required" yaml:"grpc"`
 	Postgres yaml.Postgres `validate:"required" yaml:"postgres"`
-	Redis    yaml.Redis    `validate:"required" yaml:"redis"`
 }
 
 // LoadConfig reads and parses the configuration from a file specified by the CONFIG_PATH environment variable.

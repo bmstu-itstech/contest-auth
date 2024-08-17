@@ -4,12 +4,13 @@ import (
 	"context"
 	"log"
 
-	"github.com/bmstu-itstech/contest-auth/pkg/db/transaction"
-
 	"github.com/bmstu-itstech/contest-auth/config"
+	"github.com/bmstu-itstech/contest-auth/internal/repository"
+	"github.com/bmstu-itstech/contest-auth/internal/service"
 	"github.com/bmstu-itstech/contest-auth/pkg/closer"
 	"github.com/bmstu-itstech/contest-auth/pkg/db"
 	"github.com/bmstu-itstech/contest-auth/pkg/db/pg"
+	"github.com/bmstu-itstech/contest-auth/pkg/db/transaction"
 )
 
 type serviceProvider struct {
