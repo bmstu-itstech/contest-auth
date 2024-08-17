@@ -9,7 +9,7 @@ type RegistrationParams struct {
 
 // RegistrationResponse contains the response for the Registration method.
 type RegistrationResponse struct {
-	Success string
+	Success bool
 }
 
 // LoginParams contains parameters for the Login method.

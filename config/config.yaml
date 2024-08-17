@@ -8,3 +8,6 @@ postgres:
   password: "auth-password"
   dbname: "auth"
   sslmode: "disable"
+jwt:
+  refresh_token_expiration: 50m
+  access_token_expiration: 5m

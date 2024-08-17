@@ -19,7 +19,7 @@ message RegistrationRequest {
 }
 
 message RegistrationResponse {
-    string success = 1;
+    bool success = 1;
 }
 
 message LogoutRequest {
