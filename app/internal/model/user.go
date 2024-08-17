@@ -2,6 +2,7 @@ package model
 
 // RegistrationParams contains parameters for the Registration method.
 type RegistrationParams struct {
+	Email    string
 	Username string
 	Password string
 }
@@ -13,7 +14,7 @@ type RegistrationResponse struct {
 
 // LoginParams contains parameters for the Login method.
 type LoginParams struct {
-	Username string
+	Email    string
 	Password string
 }
 
@@ -72,5 +73,6 @@ type GetUserByEmailParams struct {
 type GetUserByEmailResponse struct {
 	UserID       string
 	Email        string
+	Username     string
 	PasswordHash string
 }
