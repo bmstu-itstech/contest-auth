@@ -3,6 +3,7 @@ module github.com/bmstu-itstech/contest-auth
 go 1.22.2
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/georgysavva/scany v1.2.2
 	github.com/gofiber/fiber/v2 v2.52.5
 	github.com/gojuno/minimock/v3 v3.3.14
