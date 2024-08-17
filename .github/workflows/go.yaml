@@ -2,14 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
-
-env:
-  REGISTRY: "cr.selcloud.ru/slimshady"
-  IMAGE_APP_NAME: "auth"
-  IMAGE_MIGRATOR_NAME: "auth-migrator"
+    branches: [main, master]
 
 jobs:
   linter:
@@ -20,7 +15,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v4
         with:
-          go-version: '1.22'
+          go-version: "1.22"
           cache: false
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3
@@ -58,28 +53,27 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-        - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-        - name: Set up Go
-          uses: actions/setup-go@v4
-          with:
-            go-version: '1.22'
-            cache-dependency-path: app/go.sum
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.22"
+          cache-dependency-path: app/go.sum
 
-        - name: Test
-          run: cd app && go test -v ./...
+      - name: Test
+        run: cd app && go test -v ./...
 
   build:
     runs-on: ubuntu-latest
     steps:
-        - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-        - name: Set up Go
-          uses: actions/setup-go@v4
-          with:
-            go-version: '1.22'
-            cache-dependency-path: app/go.sum
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.22"
+          cache-dependency-path: app/go.sum
 
-        - name: Build
-          run: cd app && go build -o ./bin/ -v ./...
-      
+      - name: Build
+        run: cd app && go build -o ./bin/ -v ./...
