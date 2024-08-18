@@ -35,6 +35,8 @@ func LoadConfig() (*Config, error) {
 		log.Panic("JWT_REFRESH_TOKEN_SECRET_KEY is not set")
 	}
 
+	cfg.JWT.RefreshTokenSecretKey = refreshTokenSecretKey
+
 	accessTokenSecretKey := os.Getenv("JWT_ACCESS_TOKEN_SECRET_KEY")
 	if accessTokenSecretKey == "" {
 		log.Panic("JWT_ACCESS_TOKEN_SECRET_KEY is not set")
